@@ -209,7 +209,7 @@ const CONFIG = {
   logoTexto: "Tambu 3D",
   tituloPagina: "Tambu 3D · Outlet 2026",
   instagram: "tambu.3d",               // usuario de Instagram sin @
-  titulo: ["LIQUIDACIÓN", "2026"],  // 
+  titulo: ["LIQUIDACIÓN", "2026"],  // cada elemento es una línea del título
   // Logo en lugar del título de texto (PNG transparente). Dejá "" para usar el texto.
   logoTituloOscuro: "",
   logoTituloClaro: "",
@@ -230,7 +230,7 @@ const CONFIG = {
   pieDerecha: "PRECIOS EN PESOS ARGENTINOS · STOCK LIMITADO",
 
   // Se muestra en el detalle de cada producto. Dejá "" para ocultarlo.
-  estadoGeneral: "",
+  estadoGeneral: "Nuevo, en perfecto estado",
 
   colores: { acento: "#026876", textoSobreAcento: "#ffffff" },
 
@@ -619,7 +619,7 @@ async function cargarSheet() {
         precio: num(g("precio")), anterior: num(g("anterior")), etiqueta: g("etiqueta"), descripcion: g("descripcion"),
         imagenes: g("imagenes").split("|").map(x => x.trim()).filter(Boolean),
         detalles: g("detalles").split("|").map(x => x.split(":")).filter(x => x.length >= 2).map(x => [x[0].trim(), x.slice(1).join(":").trim()]),
-        : g("estado"), stock: g("stock")
+        estado: g("estado"), stock: g("stock")
       };
     }).filter(p => p.id && p.nombre);
     if (!lista.length) throw new Error("planilla vacía");
