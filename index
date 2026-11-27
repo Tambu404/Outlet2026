@@ -513,10 +513,10 @@ function abrir(id, desdeHash) {
   s.querySelector("h2").textContent = p.nombre;
   s.querySelector(".price").innerHTML = precioHtml(p);
   s.querySelector(".desc").textContent = p.descripcion;
-  const filas = (p.stock ? [["Disponibilidad", p.stock]] : []).concat(CONFIG.General ? [["", CONFIG.General]] : [], p.detalles);
+  const filas = (p.stock ? [["Disponibilidad", p.stock]] : []).concat(CONFIG.estadoGeneral ? [["Estado", CONFIG.estadoGeneral]] : [], p.detalles);
   s.querySelector("ul").innerHTML = filas.map(d => "<li><span>" + esc(d[0]) + "</span><span>" + esc(d[1]) + "</span></li>").join("");
   const wa = s.querySelector(".wa"), add = s.querySelector("#addM");
-  if (bloqueado(p)) { wa.textContent = p..toUpperCase(); wa.setAttribute("aria-disabled", "true"); add.remove(); }
+  if (bloqueado(p)) { wa.textContent = p.estado.toUpperCase(); wa.setAttribute("aria-disabled", "true"); add.remove(); }
   else { wa.textContent = CONFIG.textoReservar; wa.href = waLink(msg); add.dataset.add = p.id; add.onclick = () => alternar(p.id); pintarAdd(); }
   const main = s.querySelector(".main"), th = s.querySelector(".thumbs");
   let fi = 0;
@@ -619,7 +619,7 @@ async function cargarSheet() {
         precio: num(g("precio")), anterior: num(g("anterior")), etiqueta: g("etiqueta"), descripcion: g("descripcion"),
         imagenes: g("imagenes").split("|").map(x => x.trim()).filter(Boolean),
         detalles: g("detalles").split("|").map(x => x.split(":")).filter(x => x.length >= 2).map(x => [x[0].trim(), x.slice(1).join(":").trim()]),
-        : g(""), stock: g("stock")
+        : g("estado"), stock: g("stock")
       };
     }).filter(p => p.id && p.nombre);
     if (!lista.length) throw new Error("planilla vacía");
