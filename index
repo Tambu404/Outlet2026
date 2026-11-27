@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tambu 3D · Outlet 2026</title>
+<meta name="description" content="Liquidación de fin de año de Tambu 3D. Geek, anime, series, películas e impresión 3D. Reservá por WhatsApp.">
+<meta name="theme-color" content="#026876">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/open-sauce-sans@5.2.5/400.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/open-sauce-sans@5.2.5/700.css" rel="stylesheet">
+<style>
+:root{
+  --accent:#026876;--accent-ink:#fff;
+  --sans:"Open Sauce Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --display:"Bebas Neue",Impact,"Arial Narrow",sans-serif;
+}
+[data-theme="dark"]{--bg:#070f11;--surface:#0e1a1d;--ink:#eefafc;--muted:#8aa5ab;--line:#1f3a40;--accent-t:#2fb5c8;--grid:#ffffff08}
+[data-theme="light"]{--bg:#f1f8f9;--surface:#fff;--ink:#0b1e22;--muted:#587077;--line:#0b1e22;--accent-t:#026876;--grid:#0b1e220d}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:56px 56px;background-position:-1px -1px}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--accent-t);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+h1,h2,h3,.logo,.price,.total,.chip,.btn,.btn-mode,.add,.num,.state,.tagl,.steps b,.nav,.code,.tag{font-family:var(--display);font-weight:400}
+
+/* barra superior */
+.top{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:2px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;gap:8px}
+.logo{text-decoration:none;font-size:clamp(20px,5.5vw,30px);letter-spacing:.03em;white-space:nowrap}
+.logo b{color:var(--accent-t);font-weight:400}
+.top .right{display:flex;gap:8px}
+.btn-mode{border:2px solid var(--line);background:var(--surface);padding:6px 12px;font-size:16px;letter-spacing:.06em;border-radius:0;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.btn-mode:hover{border-color:var(--accent-t);color:var(--accent-t)}
+.btn-mode b{color:var(--accent-t);font-weight:400}
+@media(max-width:640px){.ig span,.mw{display:none}.btn-mode{padding:6px 9px}}
+
+/* hero */
+.hero{padding:56px 0 40px}
+.hero .tag{font-size:18px;letter-spacing:.08em;color:var(--accent-t);display:flex;gap:14px;flex-wrap:wrap}
+.hero h1{font-size:clamp(76px,20vw,240px);line-height:1;text-transform:uppercase;margin:18px 0 22px}
+.hero h1 span{display:block;color:var(--ink);text-shadow:4px 4px 0 var(--line)}
+.hero h1 span+span{color:var(--accent-t);margin-top:.06em}
+.hero h1 i{font-style:normal}
+.hero p{max-width:52ch;font-size:19px;color:var(--muted);white-space:pre-line}
+.hero h1.has-logo{font-size:0;line-height:0}
+.hero-logo{display:block;max-width:min(100%,560px);max-height:280px}
+[data-theme="dark"] .hero-logo.l-light,[data-theme="light"] .hero-logo.l-dark{display:none}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:36px;border:2px solid var(--line);background:var(--surface)}
+.steps li{list-style:none;padding:16px 18px;display:flex;gap:14px;align-items:center;border-right:2px solid var(--line);font-weight:500}
+.steps li:last-child{border-right:0}
+.steps b{color:var(--accent-t);font-size:34px}
+@media(max-width:680px){.steps li{border-right:0;border-bottom:2px solid var(--line)}.steps li:last-child{border-bottom:0}}
+
+/* filtros */
+#list{scroll-margin-top:70px}
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:14px 0 18px;border-top:2px solid var(--line)}
+.chips,.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.controls{gap:10px}
+.chip{border:2px solid var(--line);background:var(--surface);padding:7px 14px;font-size:18px;letter-spacing:.05em;border-radius:0}
+.chip small{color:var(--muted);margin-left:6px;font-size:14px;font-family:var(--display)}
+.chip:hover{border-color:var(--accent-t)}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.chip[aria-pressed="true"] small{color:inherit;opacity:.8}
+.search,.sel{border:2px solid var(--line);background:var(--surface);color:var(--ink);padding:8px 12px;font-family:var(--sans);font-size:14px;border-radius:0}
+.search{min-width:220px}
+.search:focus,.sel:focus{outline:none;border-color:var(--accent-t)}
+.chk{display:flex;gap:6px;align-items:center;font-size:14px;cursor:pointer}
+.chk input{accent-color:var(--accent);width:16px;height:16px}
+
+/* grilla */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px;padding-bottom:56px}
+.card{border:2px solid var(--line);background:var(--surface);display:flex;flex-direction:column;box-shadow:6px 6px 0 var(--line);transition:transform .12s,box-shadow .12s,border-color .12s}
+.card:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--accent);border-color:var(--accent)}
+.card .ver{display:flex;flex-direction:column;flex:1;width:100%;background:none;border:0;padding:0;text-align:left;border-radius:0}
+.card .ver:focus-visible{outline-offset:-3px}
+.thumb{position:relative;aspect-ratio:4/3;border-bottom:2px solid var(--line);overflow:hidden;background:var(--bg)}
+.thumb img,.gal .main img{width:100%;height:100%;object-fit:cover;display:block;position:relative;z-index:1}
+.ph{position:absolute;inset:0;display:grid;place-items:center;font-size:44px;color:var(--accent-t);background:repeating-linear-gradient(135deg,transparent 0 10px,#02687626 10px 11px)}
+.num,.state,.tagl{position:absolute;z-index:2;font-size:16px;letter-spacing:.05em;padding:2px 8px}
+.num{top:10px;left:10px;background:var(--accent);color:var(--accent-ink);font-size:19px}
+.state{top:10px;right:10px;background:var(--ink);color:var(--bg)}
+.tagl{left:10px;bottom:10px;background:var(--bg);color:var(--accent-t);border:2px solid var(--accent);text-transform:uppercase}
+.card .body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h3{font-size:27px;line-height:1.05;letter-spacing:.01em}
+.cat{font-size:12px;color:var(--muted)}
+.price{font-size:30px;letter-spacing:.02em;margin-top:auto;padding-top:8px}
+.old{color:var(--muted);font-size:.7em;margin-right:6px}
+.card.off{opacity:.55}
+.card.off .price{text-decoration:line-through}
+.add{border:0;border-top:2px solid var(--line);background:var(--bg);padding:11px;font-size:17px;letter-spacing:.06em;border-radius:0;width:100%}
+.add:hover,.add[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.empty{grid-column:1/-1;padding:40px;border:2px dashed var(--line);text-align:center;color:var(--muted)}
+
+/* banda de contacto */
+.cta{border-top:2px solid var(--line);border-bottom:2px solid var(--line);background:var(--accent);color:var(--accent-ink);padding:48px 0}
+.cta .wrap{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between}
+.cta .tag{font-size:18px;letter-spacing:.08em;opacity:.85}
+.cta h2{font-size:clamp(48px,9vw,88px);line-height:.95;letter-spacing:.01em;margin:8px 0 10px}
+.cta p{max-width:50ch;opacity:.92;white-space:pre-line;font-size:17px}
+.btn{display:inline-block;border:2px solid var(--ink);background:var(--bg);color:var(--ink);padding:14px 22px;font-size:22px;letter-spacing:.05em;text-decoration:none;box-shadow:5px 5px 0 var(--ink);border-radius:0}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+.btn.wa{background:var(--accent);color:var(--accent-ink);width:100%;text-align:center}
+.btn.alt{width:100%;text-align:center}
+.btn.alt[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.btn[aria-disabled="true"]{pointer-events:none;opacity:.5}
+footer{padding:28px 0;font-size:12px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+.ig-foot{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:13px}
+.ig-foot:hover{color:var(--accent-t)}
+
+/* modales */
+.modal{position:fixed;inset:0;z-index:50;background:#0009;display:none;align-items:center;justify-content:center;padding:16px}
+.modal.open{display:flex}
+.sheet{background:var(--surface);border:2px solid var(--line);box-shadow:10px 10px 0 var(--accent);width:min(900px,100%);max-height:calc(100dvh - 32px);overflow:auto;display:grid;grid-template-columns:1.1fr 1fr;position:relative}
+.sheet.small{grid-template-columns:1fr;width:min(560px,100%)}
+@media(max-width:760px){.sheet{grid-template-columns:1fr}}
+.close,.rm{border:2px solid var(--line);background:var(--bg);font-family:var(--sans);border-radius:0}
+.close{position:absolute;top:10px;right:10px;z-index:3;width:38px;height:38px;font-size:16px}
+.rm{width:28px;height:28px;margin-left:10px}
+.close:hover,.rm:hover{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.gal{border-right:2px solid var(--line);background:var(--bg)}
+@media(max-width:760px){.gal{border-right:0;border-bottom:2px solid var(--line)}}
+.gal .main{aspect-ratio:4/3;position:relative;overflow:hidden;touch-action:pan-y}
+.thumbs{display:flex;gap:8px;padding:10px;flex-wrap:wrap}
+.thumbs button{width:60px;height:46px;padding:0;border:2px solid var(--line);background:var(--bg);overflow:hidden;border-radius:0}
+.thumbs button[aria-current="true"]{border-color:var(--accent-t)}
+.thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+.info{padding:26px 24px;display:flex;flex-direction:column;gap:10px}
+.info .code{color:var(--accent-t);font-size:20px;letter-spacing:.05em}
+.info h2{font-size:48px;line-height:.98;letter-spacing:.01em;padding-right:36px}
+.info .desc{color:var(--muted);white-space:pre-line}
+.info .price{font-size:44px;margin:8px 0}
+.info ul{list-style:none;padding:0;font-size:14px;border-top:2px solid var(--line)}
+.info li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:7px 0;border-bottom:1px solid var(--line)}
+.info li span:first-child{color:var(--muted)}
+.info li span.pn{font-family:var(--display);font-size:20px;letter-spacing:.03em;color:var(--ink)}
+.share{background:none;border:0;font-size:12px;color:var(--muted);text-decoration:underline;text-align:left;padding:0}
+.share:hover{color:var(--accent-t)}
+.acts{display:flex;flex-direction:column;gap:12px;margin-top:6px}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:8px;border-top:2px solid var(--line);padding-top:12px;margin-top:6px;font-size:16px;letter-spacing:.05em;color:var(--muted)}
+.nav button{border:2px solid var(--line);background:var(--bg);padding:6px 10px;font-family:var(--display);font-size:16px;letter-spacing:.05em;border-radius:0}
+.nav button:hover{border-color:var(--accent-t);color:var(--accent-t)}
+.total{display:flex;justify-content:space-between;font-size:30px;padding:12px 0 4px}
+.total small{font-size:12px;color:var(--muted);font-family:var(--sans)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="#" id="logo"></a>
+  <div class="right">
+    <a class="btn-mode ig" id="igLink" target="_blank" rel="noopener" aria-label="Instagram de Tambu 3D"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span id="igText"></span></a>
+    <button class="btn-mode" id="cartBtn" type="button" aria-label="Ver mi carrito">CARRITO <b id="cartN">0</b></button>
+    <button class="btn-mode" id="mode" type="button" aria-label="Cambiar entre modo claro y oscuro">◐ <span class="mw">MODO</span></button>
+  </div>
+</div></header>
+
+<main>
+  <section class="hero"><div class="wrap">
+    <h1 id="heroTitle"></h1>
+    <p id="heroText"></p>
+    <ol class="steps" id="steps"></ol>
+  </div></section>
+
+  <section id="list"><div class="wrap">
+    <div class="tools">
+      <div class="chips" id="chips" role="group" aria-label="Filtrar por categoría"></div>
+      <div class="controls">
+        <label class="chk"><input type="checkbox" id="onlyAvail"> Solo disponibles</label>
+        <select class="sel" id="sort" aria-label="Ordenar productos">
+          <option value="orig">Orden original</option><option value="asc">Menor precio</option><option value="desc">Mayor precio</option>
+        </select>
+        <input class="search" id="q" type="search" placeholder="Buscar nombre o #número" aria-label="Buscar productos">
+      </div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div></section>
+
+  <section class="cta" id="contacto"><div class="wrap">
+    <div><div class="tag" id="ctaTag"></div><h2 id="ctaTitle"></h2><p id="ctaText"></p></div>
+    <a class="btn" id="ctaBtn" target="_blank" rel="noopener"></a>
+  </div></section>
+</main>
+
+<footer><div class="wrap">
+  <a id="footIg" class="ig-foot" target="_blank" rel="noopener" aria-label="Instagram de Tambu 3D"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span id="footIgText"></span></a>
+  <span id="footR"></span>
+</div></footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle"><div class="sheet" id="sheet"></div></div>
+<div class="modal" id="cartModal" role="dialog" aria-modal="true" aria-labelledby="cTitle"><div class="sheet small" id="cartSheet"></div></div>
+
+<script>
+/* =====================================================================
+   1) CONFIGURACIÓN GENERAL  ←  EDITÁ ACÁ TEXTOS, WHATSAPP, INSTAGRAM Y COLORES
+   ===================================================================== */
+const CONFIG = {
+  // Con código de país, sin +, espacios ni guiones. Argentina celular: 549 + área + número
+  whatsapp: "5491166424871",
+
+  logoTexto: "Tambu 3D",
+  tituloPagina: "Tambu 3D · Outlet 2026",
+  instagram: "tambu.3d",               // usuario de Instagram sin @
+  titulo: ["LIQUIDACIÓN", "2026"],  // 
+  // Logo en lugar del título de texto (PNG transparente). Dejá "" para usar el texto.
+  logoTituloOscuro: "",
+  logoTituloClaro: "",
+  logoAlt: "Tambu 3D · Liquidación 2026",
+  subtituloHero: "Cerramos el año liquidando el stock a precios únicos.\nGeek, anime, series, películas e impresión 3D: todo en perfecto estado.",
+
+  pasos: ["Elegí tu producto", "Reservalo por WhatsApp", "Coordinamos retiro o envío"],
+
+  moneda: "$",
+  textoReservar: "RESERVAR POR WHATSAPP",
+  mensajeProducto: "Hola! Quiero reservar el producto #{numero} ({nombre}) a {precio}. ¿Sigue disponible?",
+  mensajeGeneral: "Hola! Vi la liquidación de Tambu 3D y quiero hacer una consulta.",
+
+  ctaEtiqueta: "// ¿DUDAS O CONSULTAS?",
+  ctaTitulo: "¡No te quedes esperando!",
+  ctaTexto: "Son las últimas únidades: reservamos por orden de pedido confirmado.\nEl retiro o envío se coordina por WhatsApp.",
+  ctaBoton: "ESCRIBINOS →",
+  pieDerecha: "PRECIOS EN PESOS ARGENTINOS · STOCK LIMITADO",
+
+  // Se muestra en el detalle de cada producto. Dejá "" para ocultarlo.
+  estadoGeneral:
+
+  colores: { acento: "#026876", textoSobreAcento: "#ffffff" },
+
+  // "Últimos" se arma sola: entran los productos con stock "1 unidad" (ver abajo).
+  categorias: ["Nuevos ingresos", "Últimos", "Figuras", "Llaveros", "Deco", "Anime", "Gaming", "Indumentaria", "Accesorios", "Combos", "Extras"],
+  textoCategoriaVacia: "Todavía no hay productos en esta categoría. ¡Volvé pronto!",
+
+  // ---- Carrito ----
+  textoAgregar: "+ AGREGAR AL CARRITO",
+  textoEnReserva: "✓ EN EL CARRITO",
+  mensajeCarrito: "Hola! Quiero reservar estos productos:",
+  textoEnviarReserva: "ENVIAR CARRITO POR WHATSAPP",
+
+  // ---- Google Sheets (OPCIONAL) ----
+  // Vacío = usa la lista PRODUCTOS de abajo. Publicá tu hoja como .csv y pegá el link.
+  // Columnas: id, categoria, nombre, precio, anterior, etiqueta, stock, descripcion, imagenes, detalles, estado
+  googleSheetCSV: "https://docs.google.com/spreadsheets/d/e/2PACX-1vS2I7QD2J6ZMk1sKL5FqoJrxitfq0DUcTArh5ZUT6wXM6YkPSEM3nHY9tcQEQh6hDiY8JeRfDkxJD87/pub?gid=2036251558&single=true&output=csv",
+
+  estadosBloqueados: ["Reservado", "Vendido", "Agotado"]  // "Agotado" se pone solo cuando el stock es 0
+};
+
+/* =====================================================================
+   2) PRODUCTOS  ←  EJEMPLOS: REEMPLAZALOS POR LOS TUYOS
+   STOCK: escribí la cantidad al principio ("1 unidad", "5 unidades"). Con 1 entra solo en "Últimos"; con 0 se marca "Agotado".
+   id único · categoria (varias con |) · precio sin puntos (0 = "Consultar")
+   anterior (precio previo, se tacha y muestra % OFF) · etiqueta · stock
+   imagenes en img/ · detalles [dato, valor] · estado "", "Reservado" o "Vendido"
+   ===================================================================== */
+let PRODUCTOS = [
+  { id:"01", categoria:"Figuras|Anime", nombre:"Figura articulada impresa en 3D", precio:12000, anterior:18000, stock:"3 unidades",
+    descripcion:"Figura articulada impresa en 3D, lista para exhibir. Ejemplo: reemplazá este texto por la descripción real.",
+    imagenes:["img/01.webp"], detalles:[["Material","PLA"],["Alto","15 cm"]], estado:"" },
+  { id:"02", categoria:"Llaveros|Anime", nombre:"Llavero anime", precio:2500, anterior:4000, stock:"10 unidades",
+    descripcion:"Llavero con personaje de anime impreso en 3D.",
+    imagenes:["img/02.webp"], detalles:[["Material","PLA"]], estado:"" },
+  { id:"03", categoria:"Deco|Nuevos ingresos", nombre:"Lámpara litofanía", precio:15000, stock:"1 unidad",
+    descripcion:"Lámpara litofanía con diseño geek. Se ve la imagen al encenderla.",
+    imagenes:["img/03.webp"], detalles:[["Alimentación","USB"]], estado:"" },
+  { id:"04", categoria:"Indumentaria", nombre:"Remera geek [Negra]", precio:9000, anterior:14000, stock:"Consultar talles",
+    descripcion:"Remera de algodón con estampa geek.",
+    imagenes:["img/04.webp"], detalles:[["Talles","S al XL"]], estado:"" },
+  { id:"05", categoria:"Accesorios", nombre:"Taza temática", precio:5000, stock:"4 unidades",
+    descripcion:"Taza de cerámica con diseño de serie.",
+    imagenes:["img/05.webp"], detalles:[["Capacidad","325 cc"]], estado:"" },
+  { id:"06", categoria:"Gaming", nombre:"Soporte para joystick", precio:6000, stock:"5 unidades",
+    descripcion:"Soporte de escritorio para joystick, impreso en 3D.",
+    imagenes:["img/06.webp"], detalles:[["Material","PLA"]], estado:"" },
+  { id:"07", categoria:"Combos", nombre:"Llavero + Soporte + Figura", precio:18000, anterior:22000, stock:"2 unidades",
+    descripcion:"Combo geek a precio especial. Sujeto al stock de cada diseño: consultanos.",
+    imagenes:["img/07.webp"], detalles:[["Incluye","Llavero + Soporte + Figura"]], estado:"" },
+  { id:"08", categoria:"Extras|Anime", nombre:"Pack de stickers", precio:1500, stock:"Consultar stock",
+    descripcion:"Pack de stickers de anime, series y películas.",
+    imagenes:["img/08.webp"], detalles:[], estado:"" },
+  { id:"09", categoria:"Deco", nombre:"Ejemplo agotado", precio:7000, stock:"0 unidades",
+    descripcion:"Ejemplo: con stock 0 aparece solo como Agotado y no se puede reservar.",
+    imagenes:["img/09.webp"], detalles:[], estado:"" }
+];
+
+/* =====================================================================
+   3) CÓDIGO DEL SITIO  (no hace falta tocar de acá para abajo)
+   ===================================================================== */
+const $ = id => document.getElementById(id);
+const fmt = n => n > 0 ? CONFIG.moneda + n.toLocaleString("es-AR") : "Consultar";
+const waLink = txt => "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(txt);
+const bloqueado = p => CONFIG.estadosBloqueados.includes(p.estado);
+const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const catsDe = p => (Array.isArray(p.categoria) ? p.categoria : String(p.categoria).split("|")).map(x => x.trim()).filter(Boolean);
+const abierto = id => $(id).classList.contains("open");
+const dto = p => p.anterior > p.precio && p.precio > 0 ? Math.round((1 - p.precio / p.anterior) * 100) : 0;
+const precioHtml = p => (dto(p) ? '<s class="old">' + fmt(p.anterior) + "</s>" : "") + fmt(p.precio);
+const etiq = p => p.etiqueta || (dto(p) ? dto(p) + "% OFF" : "");
+const glifo = c => ({ "Nuevos ingresos": "★", "Últimos": "❗", "Figuras": "♟", "Llaveros": "⚲", "Deco": "✦", "Anime": "☆", "Gaming": "▶", "Indumentaria": "▲", "Accesorios": "◉", "Combos": "▣", "Extras": "◇" }[c] || "◇");
+let cats = [], catActiva = "Todos", busqueda = "", orden = "orig", soloDisp = false;
+let listaActual = [], navLista = [], idActual = null, ultimoFoco = null, carrito = [];
+try { carrito = JSON.parse(localStorage.getItem("reserva") || "[]"); } catch (e) {}
+
+/* textos fijos */
+document.title = CONFIG.tituloPagina;
+$("logo").textContent = CONFIG.logoTexto;
+function tituloTexto() {
+  $("heroTitle").classList.remove("has-logo");
+  $("heroTitle").innerHTML = CONFIG.titulo.map(t => "<span>" + esc(t) + "</span>").join("");
+}
+(function iniciarLogo() {
+  const fuentes = { dark: CONFIG.logoTituloOscuro, light: CONFIG.logoTituloClaro };
+  const modos = ["dark", "light"].filter(m => fuentes[m]);
+  if (!modos.length) return tituloTexto();
+  const ok = {}; let pend = modos.length;
+  const fin = () => {
+    if (--pend) return;
+    if (!ok.dark && !ok.light) return tituloTexto();
+    const h = $("heroTitle"); h.classList.add("has-logo"); h.innerHTML = "";
+    [["dark", ok.dark || ok.light], ["light", ok.light || ok.dark]].forEach(([m, src]) => {
+      const x = new Image(); x.src = src; x.alt = CONFIG.logoAlt; x.className = "hero-logo l-" + m; h.appendChild(x);
+    });
+  };
+  modos.forEach(m => { const im = new Image(); im.onload = () => { ok[m] = fuentes[m]; fin(); }; im.onerror = fin; im.src = fuentes[m]; });
+})();
+$("igLink").href = $("footIg").href = "https://www.instagram.com/" + CONFIG.instagram;
+$("igText").textContent = $("footIgText").textContent = "@" + CONFIG.instagram;
+$("heroText").textContent = CONFIG.subtituloHero;
+$("steps").innerHTML = CONFIG.pasos.map((t, i) => "<li><b>" + String(i + 1).padStart(2, "0") + "</b>" + esc(t) + "</li>").join("");
+$("ctaTag").textContent = CONFIG.ctaEtiqueta;
+$("ctaTitle").textContent = CONFIG.ctaTitulo;
+$("ctaText").textContent = CONFIG.ctaTexto;
+$("ctaBtn").textContent = CONFIG.ctaBoton;
+$("ctaBtn").href = waLink(CONFIG.mensajeGeneral);
+$("footR").textContent = CONFIG.pieDerecha;
+if (CONFIG.colores.acento) document.documentElement.style.setProperty("--accent", CONFIG.colores.acento);
+if (CONFIG.colores.textoSobreAcento) document.documentElement.style.setProperty("--accent-ink", CONFIG.colores.textoSobreAcento);
+
+/* modo claro / oscuro */
+(function () {
+  let t = null;
+  try { t = localStorage.getItem("tema"); } catch (e) {}
+  if (!t) t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  document.documentElement.dataset.theme = t;
+  $("mode").onclick = () => {
+    t = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = t;
+    try { localStorage.setItem("tema", t); } catch (e) {}
+  };
+})();
+
+function imgTag(src, alt) {
+  const i = document.createElement("img");
+  i.src = src; i.alt = alt; i.loading = "lazy"; i.onerror = () => i.remove();
+  return i;
+}
+const stockNum = p => { const m = String(p.stock || "").match(/^\s*(\d+)\s*(unidad|unidades|u\.?)?\s*$/i); return m ? parseInt(m[1], 10) : null; };
+function normalizar() {
+  PRODUCTOS.forEach(p => {
+    p.categoria = catsDe(p).filter(c => c !== "Últimos").join("|");
+    const n = stockNum(p);
+    if (n === 0 && !bloqueado(p)) p.estado = "Agotado";
+    if (n === 1 && !bloqueado(p)) { p.categoria += "|Últimos"; if (!p.etiqueta) p.etiqueta = "Última unidad"; }
+  });
+}
+function calcCats() {
+  const extra = [...new Set(PRODUCTOS.flatMap(catsDe))].filter(c => !CONFIG.categorias.includes(c));
+  cats = [...CONFIG.categorias, ...extra];
+  if (catActiva !== "Todos" && !cats.includes(catActiva)) catActiva = "Todos";
+}
+
+/* carrito */
+const enCarrito = id => carrito.includes(id);
+function guardarCarrito() {
+  try { localStorage.setItem("reserva", JSON.stringify(carrito)); } catch (e) {}
+  $("cartN").textContent = carrito.length;
+}
+function pintarAdd() {
+  document.querySelectorAll("[data-add]").forEach(b => {
+    const on = enCarrito(b.dataset.add);
+    b.setAttribute("aria-pressed", on);
+    b.textContent = on ? CONFIG.textoEnReserva : CONFIG.textoAgregar;
+  });
+}
+function alternar(id) {
+  carrito = enCarrito(id) ? carrito.filter(x => x !== id) : [...carrito, id];
+  guardarCarrito(); pintarAdd();
+  if (abierto("cartModal")) dibujarCarrito();
+}
+function dibujarCarrito() {
+  const items = carrito.map(id => PRODUCTOS.find(p => p.id === id)).filter(Boolean);
+  const total = items.reduce((t, p) => t + (p.precio > 0 ? p.precio : 0), 0);
+  const aCons = items.filter(p => !(p.precio > 0)).length;
+  const s = $("cartSheet");
+  let h = '<button class="close" type="button" aria-label="Cerrar">✕</button><div class="info"><span class="code">// TU CARRITO</span><h2 id="cTitle">' +
+    (items.length ? items.length + (items.length === 1 ? " producto" : " productos") : "Todavía no hay productos") + "</h2>";
+  if (!items.length) {
+    h += '<p class="desc">Tocá “' + esc(CONFIG.textoAgregar) + '” en los productos que te interesen y los reservás todos juntos en un solo mensaje de WhatsApp.</p><button class="btn alt" type="button" id="verProd">VER PRODUCTOS</button></div>';
+  } else {
+    h += "<ul>" + items.map(p => '<li><span class="pn">#' + esc(p.id) + " " + esc(p.nombre) + "</span><span>" + fmt(p.precio) +
+      '<button class="rm" type="button" data-rm="' + esc(p.id) + '" aria-label="Sacar ' + esc(p.nombre) + '">✕</button></span></li>').join("") + "</ul>" +
+      '<div class="total"><span>TOTAL</span><span>' + fmt(total) + (aCons ? " <small>+ " + aCons + " a consultar</small>" : "") + "</span></div>" +
+      '<div class="acts"><a class="btn wa" id="cartWa" target="_blank" rel="noopener">' + esc(CONFIG.textoEnviarReserva) + '</a><button class="btn alt" type="button" id="vaciar">VACIAR CARRITO</button></div></div>';
+  }
+  s.innerHTML = h;
+  s.querySelector(".close").onclick = cerrarCarrito;
+  s.querySelectorAll("[data-rm]").forEach(b => b.onclick = () => alternar(b.dataset.rm));
+  const v = $("verProd"); if (v) v.onclick = () => { cerrarCarrito(); $("list").scrollIntoView(); };
+  const va = $("vaciar"); if (va) va.onclick = () => { carrito = []; guardarCarrito(); pintarAdd(); dibujarCarrito(); };
+  const wa = $("cartWa");
+  if (wa) wa.href = waLink(CONFIG.mensajeCarrito + "\n" + items.map(p => "• #" + p.id + " " + p.nombre + " – " + fmt(p.precio)).join("\n") +
+    "\nTotal: " + fmt(total) + (aCons ? " (+ " + aCons + " a consultar)" : ""));
+}
+function abrirCarrito() {
+  dibujarCarrito();
+  $("cartModal").classList.add("open");
+  document.body.style.overflow = "hidden";
+  $("cartSheet").querySelector(".close").focus();
+}
+function cerrarCarrito() {
+  $("cartModal").classList.remove("open");
+  if (!abierto("modal")) document.body.style.overflow = "";
+  $("cartBtn").focus();
+}
+
+/* filtros */
+function dibujarChips() {
+  $("chips").innerHTML = "";
+  ["Todos", ...cats].forEach(c => {
+    const n = c === "Todos" ? PRODUCTOS.length : PRODUCTOS.filter(p => catsDe(p).includes(c)).length;
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "chip";
+    b.setAttribute("aria-pressed", c === catActiva);
+    b.innerHTML = esc(c) + "<small>" + n + "</small>";
+    b.onclick = () => { catActiva = c; dibujarChips(); dibujarGrilla(); };
+    $("chips").appendChild(b);
+  });
+}
+function filtrar() {
+  const q = busqueda.trim().toLowerCase().replace("#", "");
+  let l = PRODUCTOS.filter(p =>
+    (catActiva === "Todos" || catsDe(p).includes(catActiva)) && (!soloDisp || !bloqueado(p)) &&
+    (!q || p.nombre.toLowerCase().includes(q) || p.id.toLowerCase() === q || p.id.replace(/^0+/, "") === q));
+  if (orden !== "orig") {
+    const k = p => p.precio > 0 ? p.precio : Infinity;
+    l = [...l].sort((a, b) => orden === "asc" ? (k(a) === k(b) ? 0 : k(a) - k(b)) : ((a.precio > 0 ? 0 : 1) - (b.precio > 0 ? 0 : 1)) || b.precio - a.precio);
+  }
+  return l;
+}
+
+/* grilla */
+function dibujarGrilla() {
+  const lista = filtrar();
+  listaActual = lista.map(p => p.id);
+  const g = $("grid"); g.innerHTML = "";
+  if (!lista.length) {
+    const vacia = catActiva !== "Todos" && !PRODUCTOS.some(p => catsDe(p).includes(catActiva));
+    g.innerHTML = '<div class="empty">' + esc(vacia ? CONFIG.textoCategoriaVacia : "No encontramos productos con ese filtro.") + "</div>";
+    return;
+  }
+  lista.forEach(p => {
+    const c = document.createElement("article");
+    c.className = "card" + (bloqueado(p) ? " off" : "");
+    const ver = document.createElement("button");
+    ver.type = "button"; ver.className = "ver"; ver.setAttribute("aria-label", "Ver " + p.nombre);
+    const th = document.createElement("div");
+    th.className = "thumb";
+    th.innerHTML = '<div class="ph">' + glifo(catsDe(p)[0]) + "</div>";
+    if (p.imagenes[0]) th.appendChild(imgTag(p.imagenes[0], p.nombre));
+    th.insertAdjacentHTML("beforeend", '<span class="num">#' + esc(p.id) + "</span>" +
+      (p.estado ? '<span class="state">' + esc(p.estado) + "</span>" : "") + (etiq(p) ? '<span class="tagl">' + esc(etiq(p)) + "</span>" : ""));
+    const b = document.createElement("div");
+    b.className = "body";
+    b.innerHTML = '<span class="cat">' + esc(catsDe(p)[0]) + (p.stock ? " · " + esc(p.stock) : "") + "</span><h3>" + esc(p.nombre) + '</h3><span class="price">' + precioHtml(p) + "</span>";
+    ver.append(th, b);
+    ver.onclick = () => abrir(p.id);
+    c.appendChild(ver);
+    if (!bloqueado(p)) {
+      const a = document.createElement("button");
+      a.type = "button"; a.className = "add"; a.dataset.add = p.id;
+      a.onclick = () => alternar(p.id);
+      c.appendChild(a);
+    }
+    g.appendChild(c);
+  });
+  pintarAdd();
+}
+
+/* producto individual (link propio: tusitio.com/#03) */
+function abrir(id, desdeHash) {
+  const p = PRODUCTOS.find(x => x.id === id);
+  if (!p) return;
+  const ya = abierto("modal");
+  if (!ya) ultimoFoco = document.activeElement;
+  idActual = id;
+  navLista = listaActual.includes(id) ? listaActual : PRODUCTOS.map(x => x.id);
+  const s = $("sheet");
+  const msg = CONFIG.mensajeProducto.replace("{numero}", p.id).replace("{nombre}", p.nombre).replace("{precio}", fmt(p.precio));
+  s.innerHTML =
+    '<button class="close" type="button" aria-label="Cerrar">✕</button>' +
+    '<div class="gal"><div class="main"><div class="ph">' + glifo(catsDe(p)[0]) + '</div></div><div class="thumbs"></div></div>' +
+    '<div class="info"><span class="code"></span><h2 id="mTitle"></h2><div class="price"></div><p class="desc"></p><ul></ul>' +
+    '<div class="acts"><a class="btn wa" target="_blank" rel="noopener"></a><button class="btn alt" type="button" id="addM"></button></div>' +
+    '<button class="share" type="button">Copiar link de este producto</button>' +
+    '<div class="nav"><button type="button" class="prev">‹ ANTERIOR</button><span class="pos"></span><button type="button" class="next">SIGUIENTE ›</button></div></div>';
+  s.querySelector(".code").textContent = "#" + p.id + " · " + catsDe(p)[0] + (etiq(p) ? " · " + etiq(p) : "");
+  s.querySelector("h2").textContent = p.nombre;
+  s.querySelector(".price").innerHTML = precioHtml(p);
+  s.querySelector(".desc").textContent = p.descripcion;
+  const filas = (p.stock ? [["Disponibilidad", p.stock]] : []).concat(CONFIG.estadoGeneral ? [["Estado", CONFIG.estadoGeneral]] : [], p.detalles);
+  s.querySelector("ul").innerHTML = filas.map(d => "<li><span>" + esc(d[0]) + "</span><span>" + esc(d[1]) + "</span></li>").join("");
+  const wa = s.querySelector(".wa"), add = s.querySelector("#addM");
+  if (bloqueado(p)) { wa.textContent = p.estado.toUpperCase(); wa.setAttribute("aria-disabled", "true"); add.remove(); }
+  else { wa.textContent = CONFIG.textoReservar; wa.href = waLink(msg); add.dataset.add = p.id; add.onclick = () => alternar(p.id); pintarAdd(); }
+  const main = s.querySelector(".main"), th = s.querySelector(".thumbs");
+  let fi = 0;
+  const mostrar = i => {
+    fi = (i + p.imagenes.length) % p.imagenes.length;
+    main.querySelectorAll("img").forEach(x => x.remove());
+    main.appendChild(imgTag(p.imagenes[fi], p.nombre));
+    th.querySelectorAll("button").forEach((b, j) => b.setAttribute("aria-current", j === fi));
+  };
+  if (p.imagenes.length) {
+    if (p.imagenes.length > 1) p.imagenes.forEach((src, i) => {
+      const b = document.createElement("button");
+      b.type = "button"; b.setAttribute("aria-label", "Foto " + (i + 1));
+      b.appendChild(imgTag(src, "")); b.onclick = () => mostrar(i); th.appendChild(b);
+    });
+    mostrar(0);
+    let x0 = null;
+    main.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+    main.addEventListener("touchend", e => {
+      if (x0 === null || p.imagenes.length < 2) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 40) mostrar(fi + (dx < 0 ? 1 : -1));
+      x0 = null;
+    });
+  }
+  const pos = navLista.indexOf(id);
+  if (navLista.length < 2) s.querySelector(".nav").remove();
+  else {
+    s.querySelector(".pos").textContent = (pos + 1) + " / " + navLista.length;
+    s.querySelector(".prev").onclick = () => navegar(-1);
+    s.querySelector(".next").onclick = () => navegar(1);
+  }
+  s.querySelector(".close").onclick = cerrar;
+  s.querySelector(".share").onclick = e => {
+    const url = location.href.split("#")[0] + "#" + p.id;
+    (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.reject()).then(
+      () => e.target.textContent = "¡Link copiado!", () => e.target.textContent = url);
+  };
+  $("modal").classList.add("open");
+  document.body.style.overflow = "hidden";
+  s.scrollTop = 0;
+  s.querySelector(".close").focus();
+  if (!desdeHash && location.hash !== "#" + id) history[ya ? "replaceState" : "pushState"](null, "", "#" + id);
+}
+function navegar(d) {
+  if (navLista.length < 2) return;
+  abrir(navLista[(navLista.indexOf(idActual) + d + navLista.length) % navLista.length]);
+}
+function cerrar() {
+  $("modal").classList.remove("open");
+  document.body.style.overflow = "";
+  if (PRODUCTOS.some(p => "#" + p.id === location.hash)) history.pushState(null, "", location.pathname + location.search);
+  ultimoFoco && ultimoFoco.focus && ultimoFoco.focus();
+}
+$("modal").addEventListener("click", e => { if (e.target === $("modal")) cerrar(); });
+$("cartModal").addEventListener("click", e => { if (e.target === $("cartModal")) cerrarCarrito(); });
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") { if (abierto("cartModal")) cerrarCarrito(); else if (abierto("modal")) cerrar(); }
+  else if ((e.key === "ArrowLeft" || e.key === "ArrowRight") && abierto("modal") && !abierto("cartModal") && !/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)) navegar(e.key === "ArrowLeft" ? -1 : 1);
+});
+function leerHash() {
+  const id = location.hash.slice(1);
+  if (PRODUCTOS.some(p => p.id === id)) abrir(id, true);
+  else if (abierto("modal")) { $("modal").classList.remove("open"); if (!abierto("cartModal")) document.body.style.overflow = ""; }
+}
+window.addEventListener("hashchange", leerHash);
+
+/* controles */
+$("q").addEventListener("input", e => { busqueda = e.target.value; dibujarGrilla(); });
+$("sort").addEventListener("change", e => { orden = e.target.value; dibujarGrilla(); });
+$("onlyAvail").addEventListener("change", e => { soloDisp = e.target.checked; dibujarGrilla(); });
+$("cartBtn").addEventListener("click", abrirCarrito);
+
+/* Google Sheets (opcional) */
+function parseCSV(t) {
+  const rows = []; let r = [], c = "", q = false;
+  for (let i = 0; i < t.length; i++) {
+    const ch = t[i];
+    if (q) { if (ch === '"') { if (t[i + 1] === '"') { c += '"'; i++; } else q = false; } else c += ch; }
+    else if (ch === '"') q = true;
+    else if (ch === ",") { r.push(c); c = ""; }
+    else if (ch === "\n" || ch === "\r") { if (ch === "\r" && t[i + 1] === "\n") i++; r.push(c); c = ""; rows.push(r); r = []; }
+    else c += ch;
+  }
+  if (c || r.length) { r.push(c); rows.push(r); }
+  return rows;
+}
+async function cargarSheet() {
+  if (!CONFIG.googleSheetCSV) return false;
+  try {
+    const res = await fetch(CONFIG.googleSheetCSV, { cache: "no-store" });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const filas = parseCSV(await res.text()).filter(f => f.some(x => x.trim()));
+    const cab = filas.shift().map(h => h.trim().toLowerCase());
+    const num = v => parseInt(String(v).replace(/\D/g, ""), 10) || 0;
+    const lista = filas.map(f => {
+      const g = n => (cab.indexOf(n) >= 0 ? (f[cab.indexOf(n)] || "") : "").trim();
+      return {
+        id: g("id").replace(/^(\d)$/, "0$1"), categoria: g("categoria") || "Otros", nombre: g("nombre"),
+        precio: num(g("precio")), anterior: num(g("anterior")), etiqueta: g("etiqueta"), descripcion: g("descripcion"),
+        imagenes: g("imagenes").split("|").map(x => x.trim()).filter(Boolean),
+        detalles: g("detalles").split("|").map(x => x.split(":")).filter(x => x.length >= 2).map(x => [x[0].trim(), x.slice(1).join(":").trim()]),
+        estado: g("estado"), stock: g("stock")
+      };
+    }).filter(p => p.id && p.nombre);
+    if (!lista.length) throw new Error("planilla vacía");
+    PRODUCTOS = lista;
+    return true;
+  } catch (e) { console.warn("No se pudo leer la planilla; se usan los productos del código.", e); return false; }
+}
+
+/* inicio */
+function pintarTodo() {
+  normalizar(); calcCats();
+  carrito = carrito.filter(id => PRODUCTOS.some(p => p.id === id && !bloqueado(p)));
+  guardarCarrito(); dibujarChips(); dibujarGrilla();
+}
+pintarTodo();
+leerHash();
+cargarSheet().then(ok => { if (ok) { pintarTodo(); leerHash(); } });
+</script>
+</body>
+</html>
